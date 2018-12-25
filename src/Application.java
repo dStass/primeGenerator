@@ -68,7 +68,6 @@ public class Application {
 				m = m.divide(TWO);
 			} else break;
 		}
-		//System.out.println("n=" + n.toString() + ", m=" + m.toString());
 		
 		
 		// Step 2: pick a s.t.: 1 < a < n-1
@@ -76,7 +75,6 @@ public class Application {
 		do {
 			a = new BigInteger(n.bitLength(), new Random());
 		} while (a.compareTo(n) >= 0);
-	//	System.out.println("a="+a.toString());
 		
 		
 		// Step 3: Compute b_0 = a^m (mod n), b_i = (b_(i-1))^2
@@ -91,11 +89,8 @@ public class Application {
 				if (b_i.compareTo(ONE) == 0) return false; // composite for sure
 				if (b_i.compareTo(N_MINUS_ONE) == 0) return true; // probably prime
 			}
-			
-			// b_i = (b_(i-1))^2
-			b_i = MathFunctions.raiseNumToExponentModuloBig(b_i, TWO, n);
+			b_i = MathFunctions.raiseNumToExponentModuloBig(b_i, TWO, n); // b_i = (b_(i-1))^2
 		}
-
 		return false;
 	}
 	
